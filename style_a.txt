@@ -1,0 +1,54 @@
+/* Style Points
+* Tests are not completely independent
+* Program depends on a particular order of tests.
+* Tests should be independently runnable
+*/
+
+
+void test_remove_val(list* ls)
+{
+    /* current array: [1, 2, 3, 4, 5, 6] */
+    /* removing a valid number from the list */
+    assert(remove_val_ARM(ls, 5) == 1);
+    assert(*(ls->sortedList) == 1);
+    assert(*(ls->sortedList + 1) == 2);
+    assert(*(ls->sortedList + 2) == 3);
+    assert(*(ls->sortedList + 3) == 4);
+    assert(*(ls->sortedList + 4) == 6);
+    assert(ls->size == 5);
+
+    /* current array: [1, 2, 3, 4, 6] */
+    /* removing a number not in the list (smallest) */
+    assert(remove_val_ARM(ls, 0) == 0);
+    assert(*(ls->sortedList) == 1);
+    assert(*(ls->sortedList + 1) == 2);
+    assert(*(ls->sortedList + 2) == 3);
+    assert(*(ls->sortedList + 3) == 4);
+    assert(*(ls->sortedList + 4) == 6);
+    assert(ls->size == 5);
+
+ 
+    /* current array: [1, 2, 3, 4, 6] */
+    /* removing a number that was previously removed */
+    assert(remove_val_ARM(ls, 5) == 0);
+    assert(*(ls->sortedList) == 1);
+    assert(*(ls->sortedList + 1) == 2);
+    assert(*(ls->sortedList + 2) == 3);
+    assert(*(ls->sortedList + 3) == 4);
+    assert(*(ls->sortedList + 4) == 6);
+    assert(ls->size == 5);
+
+    .
+    .
+    .
+    .
+
+
+    /* current array: empty */
+    /* removing from an empty list */
+    assert(remove_val_ARM(ls, 9) == 0);
+    assert(ls->size == 0);
+
+    /* removing from an invalid list */
+    assert(remove_val_ARM(NULL, 10) == -1);
+}

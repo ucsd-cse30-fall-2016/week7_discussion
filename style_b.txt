@@ -1,0 +1,33 @@
+/* Style Points
+* Tests are independent
+* Tests should be independently runnable
+*/
+
+void test_get_min_value(){ 
+   // Create a list
+   list *list = createlist(15;
+   
+   // Empty check for the list
+   assert(-1 == get_max_value(list));
+    
+   // Insert elements
+   insert(list, 1);
+   insert(list, 15);
+   insert(list, 3);
+   insert(list, 7);
+   insert(list, 100);
+   insert(list, 50);
+   
+   // Check min values after some removes
+   assert(1 == get_min_value(list));
+   remove_val(list,1);
+   assert(3 == get_min_value(list));
+   remove_val(list,3);
+   assert(7 == get_min_value(list));
+
+   printf("Yahoo! min works!\n");
+   // Free memory
+   free(list->sortedList);
+   free(list);
+}
+
